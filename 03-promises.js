@@ -106,16 +106,16 @@ var fs = require('fs')
 
 
 
-// 05 - clean up, missing.json
+// 04 - clean up, missing.json
 // note: readFile is a promise, so we can just return it
 // instead of wrapping it in a promise.
 
 // function readJson(filename) {
 //   return readFile(filename, 'utf8').then((result) => {
 //     try {
-//       resolve(JSON.parse(result))
+//       JSON.parse(result)
 //     } catch (err) {
-//       reject(err)
+//       throw err
 //     }
 //   })
 // }
@@ -129,7 +129,7 @@ var fs = require('fs')
 
 
 
-// 06 - clean up, bad.json
+// 05 - clean up, bad.json
 // note: we can return the value of the JSON.parse function
 // and, because we have a top level catch, the synchronous error
 // is caught
@@ -148,7 +148,7 @@ var fs = require('fs')
 
 
 
-// 07 - good.json
+// 06 - good.json
 // note: we can make it even shorter
 
 // function readJson(filename) {
@@ -167,7 +167,9 @@ var fs = require('fs')
 // 2) return a synchronous value (or undefined)
 // 3) throw a synchronous error
 
-// 08 - bad.json
+
+
+// 07 - bad.json
 // note: always use a catch at the top level
 // or your errors might not get caught
 
@@ -182,7 +184,7 @@ var fs = require('fs')
 
 
 
-// 09 - bad.json
+// 08 - bad.json
 // note: thank you unhandledRejection! it will let you know if you
 // are missing a catch somewhere in your code...
 
@@ -202,7 +204,7 @@ var fs = require('fs')
 
 
 
-// 10 - broken promise chain
+// 09 - broken promise chain
 // note: every promise needs to be returned
 // or errors will not be propagated
 //
