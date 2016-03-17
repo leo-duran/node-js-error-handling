@@ -3,16 +3,16 @@ var bunyan = require('bunyan');
 var util = require('util');
 
 var log = bunyan.createLogger({
-    name: 'myserver',
-    serializers: {
-        err: bunyan.stdSerializers.err,   // <--- use this
-    }
+  name: 'myserver',
+  serializers: {
+    err: bunyan.stdSerializers.err,   // <--- use this
+  }
 });
 
 try {
-    throw new TypeError('boom');
+  throw new TypeError('boom');
 } catch (err) {
-    log.warn({err: err}, 'operation went boom: %s', err)   // <--- here
+  log.warn(err, 'operation went boom: %s', err)   // <--- here
 }
 
 // output
